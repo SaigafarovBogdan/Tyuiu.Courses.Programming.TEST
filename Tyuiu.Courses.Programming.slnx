@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="Tyuiu.Courses.Programming.Api/Tyuiu.Courses.Programming.Api.csproj" />
+  <Project Path="Tyuiu.Courses.Programming.AppHost/Tyuiu.Courses.Programming.AppHost.csproj" />
+  <Project Path="Tyuiu.Courses.Programming.Application/Tyuiu.Courses.Programming.Application.csproj" Id="c8188990-f9d3-4e06-93da-dfa71bcc054a" />
+  <Project Path="Tyuiu.Courses.Programming.Core/Tyuiu.Courses.Programming.Core.csproj" Id="9440343a-648d-4534-a095-367d4fb46380" />
+  <Project Path="Tyuiu.Courses.Programming.Infrastructure/Tyuiu.Courses.Programming.Infrastructure.csproj" Id="d7ceb611-59af-4383-b800-d5afeb6ab03e" />
+  <Project Path="Tyuiu.Courses.Programming.ServiceDefaults/Tyuiu.Courses.Programming.ServiceDefaults.csproj" />
+</Solution>
