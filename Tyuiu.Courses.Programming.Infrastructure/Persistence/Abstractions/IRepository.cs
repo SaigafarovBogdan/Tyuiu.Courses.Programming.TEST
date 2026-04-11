@@ -9,6 +9,15 @@ namespace Tyuiu.Courses.Programming.Infrastructure.Persistence.Abstractions
 		Task<T?> GetByIdAsync(object id, Func<IQueryable<T>, IQueryable<T>>? includeFunc = null,
 			CancellationToken cancellationToken = default);
 
+		Task<List<T>> GetAllAsync(CancellationToken cancellationToken = default);
+
+		Task<List<T>> GetAllAsync(
+			Func<IQueryable<T>, IQueryable<T>>? includeFunc = null,
+			CancellationToken cancellationToken = default);
+
+		Task<bool> IsExistsAsync(object id,
+			CancellationToken cancellationToken = default);
+
 		Task<List<T>> FindAsync(Expression<Func<T, bool>> predicate,
 			CancellationToken cancellationToken = default);
 		Task<List<T>> FindAsync(Expression<Func<T, bool>> predicate,

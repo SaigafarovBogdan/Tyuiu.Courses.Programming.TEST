@@ -26,6 +26,28 @@ namespace Tyuiu.Courses.Programming.Infrastructure.Persistence.Repositories
 			return await query.FirstOrDefaultAsync(e => e.Id.Equals(id), cancellationToken);
 		}
 
+		public virtual async Task<List<T>> GetAllAsync(CancellationToken cancellationToken = default)
+		{
+			return await _dbSet.ToListAsync(cancellationToken);
+		}
+
+		public virtual async Task<List<T>> GetAllAsync(
+			Func<IQueryable<T>, IQueryable<T>>? includeFunc = null,
+			CancellationToken cancellationToken = default)
+		{
+			IQueryable<T> query = _dbSet;
+
+			if (includeFunc != null)
+				query = includeFunc(query);
+
+			return await query.ToListAsync(cancellationToken);
+		}
+
+		public virtual async Task<bool> IsExistsAsync(object id, CancellationToken cancellationToken = default)
+		{
+			return await _dbSet.AnyAsync(e => e.Id.Equals(id), cancellationToken);
+		}
+
 		public virtual async Task<List<T>> FindAsync(Expression<Func<T, bool>> predicate,
 			CancellationToken cancellationToken = default)
 		{
