@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Tyuiu.Courses.Programming.Core.Shared;
+using Tyuiu.Courses.Programming.Core.Enums;
 
 namespace Tyuiu.Courses.Programming.Api.Filters.ResultToAction
 {

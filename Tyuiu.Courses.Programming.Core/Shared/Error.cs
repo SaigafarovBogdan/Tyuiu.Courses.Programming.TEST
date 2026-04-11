@@ -1,4 +1,6 @@
-﻿namespace Tyuiu.Courses.Programming.Core.Shared
+﻿using Tyuiu.Courses.Programming.Core.Constants;
+
+namespace Tyuiu.Courses.Programming.Core.Shared
 {
 	public class Error
 	{

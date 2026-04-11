@@ -1,4 +1,5 @@
 ﻿using Tyuiu.Courses.Programming.Core.Abstractions;
+using Tyuiu.Courses.Programming.Core.Enums;
 
 namespace Tyuiu.Courses.Programming.Core.Shared
 {

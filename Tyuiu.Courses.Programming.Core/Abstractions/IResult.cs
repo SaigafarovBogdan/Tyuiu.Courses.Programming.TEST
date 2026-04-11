@@ -1,4 +1,5 @@
-﻿using Tyuiu.Courses.Programming.Core.Shared;
+﻿using Tyuiu.Courses.Programming.Core.Enums;
+using Tyuiu.Courses.Programming.Core.Shared;
 
 namespace Tyuiu.Courses.Programming.Core.Abstractions
 {

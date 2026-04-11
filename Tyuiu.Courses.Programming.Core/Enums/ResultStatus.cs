@@ -1,4 +1,4 @@
-﻿namespace Tyuiu.Courses.Programming.Core.Shared
+﻿namespace Tyuiu.Courses.Programming.Core.Enums
 {
 	public enum ResultStatus
 	{
