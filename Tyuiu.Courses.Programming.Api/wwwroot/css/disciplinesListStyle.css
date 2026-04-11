@@ -1,0 +1,11 @@
+.list-group-item.d-md-flex:hover {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+.list-group-item:hover {
+    background-color: #f8f8f8;
+}

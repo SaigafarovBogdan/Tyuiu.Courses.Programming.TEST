@@ -1,0 +1,113 @@
+.text1,
+.text2 {
+    font-size: 20px;
+    font-weight: medium;
+}
+
+.title,
+.text1 {
+    margin-bottom: 35px;
+}
+
+.title {
+    text-align: center;
+    font-size: 40px;
+    color: #3f3cc3;
+}
+
+.text2 {
+    margin-bottom: 50px;
+    padding-bottom: 50px;
+}
+
+.test {
+    border: 1px solid;
+    border-radius: 20px;
+    min-width: 800px;
+    min-height: 400px;
+    max-height: 600px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: stretch;
+
+}
+
+div #question-container h3 {
+    padding-left: 35px;
+    padding-top: 35px;
+    font-size: 20px;
+    margin-bottom: 30px;
+    color: #3f3cc3;
+}
+
+div #question-container li {
+    list-style-type: none;
+    padding-left: 35px;
+    margin-bottom: 24px;
+    font-size: 20px;
+}
+
+div #question-container input[type='radio'] {
+    margin-right: 12px;
+}
+
+div #navigation-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+div #navigation-buttons button {
+    width: 20px;
+    height: 20px;
+    border: 1px solid;
+    border-radius: 100px;
+    background-color: #fff;
+    transition-duration: 0.2s;
+}
+
+div #navigation-buttons button:hover {
+    background-color: #3f3cc3;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+div #navigation-buttons button:not(#previous-button) {
+    margin-left: 10px;
+}
+
+div #navigation-buttons button:not(#previous-button, #next-button) {
+    overflow: hidden;
+    text-indent: -999px;
+    line-height: 0px;
+}
+
+div #completed-test {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+div #completed-test button {
+    font-size: 20px;
+    width: 165px;
+    height: 36px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #3f3cc3;
+    color: #fff;
+    transition-duration: 0.2s;
+}
+
+div #completed-test button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+div #timer {
+    flex: 0 1 auto;
+    text-align: center;
+    font-size: 20px;
+}

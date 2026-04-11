@@ -1,0 +1,27 @@
+﻿@using Tyuiu.Courses.Programming.Application.Dtos
+@model Pagination
+
+<nav aria-label="Page navigation example">
+	<ul class="pagination justify-content-center mt-5">
+		<li class="page-item @(Model.Pages.Current <= 1 ? "disabled" : "")">
+			<a class="page-link" aria-label="Previous"
+			   href='@Url.Action(null, null, new { page = Model.Pages.Previous, searchTerm = Model.SearchTerm })'>
+				<span aria-hidden="true">&laquo;</span>
+			</a>
+		</li>
+		@for (int pageNumber = Model.Pages.StartPreviousStack;
+				pageNumber <= Model.Pages.EndNextStack;
+				pageNumber++)
+		{
+			<li class="page-item @(pageNumber == Model.Pages.Current ? "active" : "")">
+				<a class="page-link" href='@Url.Action(null, null, new { page = pageNumber, searchTerm =  Model.SearchTerm })'>@pageNumber</a>
+			</li>
+		}
+		<li class="page-item @(Model.Pages.Current >= Model.Pages.Total ? "disabled" : "")">
+			<a class="page-link" aria-label="Next"
+			   href='@Url.Action(null, null, new { page = Model.Pages.Next, searchTerm = Model.SearchTerm })'>
+				<span aria-hidden="true">&raquo;</span>
+			</a>
+		</li>
+	</ul>
+</nav>

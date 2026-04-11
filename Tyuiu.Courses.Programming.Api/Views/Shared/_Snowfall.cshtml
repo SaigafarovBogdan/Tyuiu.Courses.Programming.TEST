@@ -1,0 +1,167 @@
+﻿@* Views/Shared/_Snowfall.cshtml *@
+<div id="snow-container" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 9998; overflow: hidden;"></div>
+
+<style>
+    #snow-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+        z-index: 9998;
+        overflow: hidden;
+        opacity: 0;
+        animation: fadeInSnow 0.3s ease-out forwards;
+    }
+
+    @@keyframes fadeInSnow {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+</style>
+
+<script>
+    (function () {
+        const container = document.getElementById('snow-container');
+        if (!container) return;
+
+        const snowflakes = [];
+        const count = Math.min(60, Math.floor(window.innerWidth * window.innerHeight / 6000));
+
+        for (let i = 0; i < count; i++) {
+            createSnowflake();
+        }
+
+        function createSnowflake() {
+            const flake = document.createElement('div');
+            flake.innerHTML = '❄';
+
+            const opacity = Math.random() * 0.4 + 0.3;
+            const size = Math.random() * 10 + 8;
+
+            flake.style.cssText = `
+                position: absolute;
+                left: ${Math.random() * 100}vw;
+                top: ${Math.random() * 100}vh;
+                font-size: ${size}px;
+                opacity: ${opacity};
+                color: rgba(255, 255, 255, 0.95);
+                user-select: none;
+                pointer-events: none;
+                z-index: 9999;
+                transform: translateZ(0);
+                will-change: transform;
+            `;
+
+            container.appendChild(flake);
+
+            snowflakes.push({
+                element: flake,
+                left: Math.random() * 100,
+                topVH: Math.random() * 100,
+                speed: Math.random() * 0.7 + 0.2,
+                sway: (Math.random() - 0.5) * 0.03,
+                rotation: Math.random() * 360,
+                rotationSpeed: Math.random() * 0.3 + 0.1,
+                opacity: opacity,
+                size: size,
+                lastUpdate: performance.now()
+            });
+        }
+
+        let animationId = null;
+        let lastAnimationTime = performance.now();
+        let isAnimating = true;
+
+        function animate() {
+            if (!isAnimating) {
+                animationId = requestAnimationFrame(animate);
+                return;
+            }
+
+            const currentTime = performance.now();
+            const delta = (currentTime - lastAnimationTime) / 1000;
+            lastAnimationTime = currentTime;
+
+            const safeDelta = Math.min(delta, 0.1);
+
+            for (let i = snowflakes.length - 1; i >= 0; i--) {
+                const flake = snowflakes[i];
+
+                if (!flake.element.parentNode) {
+                    snowflakes.splice(i, 1);
+                    continue;
+                }
+
+                flake.topVH += flake.speed * safeDelta * 20;
+                flake.left += flake.sway * safeDelta * 10;
+                flake.rotation += flake.rotationSpeed * safeDelta * 60;
+
+                if (flake.topVH > 100) {
+                    flake.topVH = -5;
+                    flake.left = Math.random() * 100;
+                    const newOpacity = Math.random() * 0.4 + 0.3;
+                    flake.element.style.opacity = newOpacity.toString();
+                    flake.opacity = newOpacity;
+                }
+
+                flake.element.style.top = flake.topVH + 'vh';
+                flake.element.style.left = flake.left + 'vw';
+                flake.element.style.transform = `rotate(${flake.rotation % 360}deg)`;
+
+                flake.lastUpdate = currentTime;
+            }
+
+            if (snowflakes.length < count * 0.9 && Math.random() > 0.99) {
+                createSnowflake();
+            }
+
+            animationId = requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                isAnimating = false;
+                const pauseTime = performance.now();
+                for (const flake of snowflakes) {
+                    flake.lastUpdate = pauseTime;
+                }
+            } else {
+                lastAnimationTime = performance.now();
+                isAnimating = true;
+                if (!animationId) {
+                    animationId = requestAnimationFrame(animate);
+                }
+            }
+        });
+
+        window.addEventListener('beforeunload', () => {
+            isAnimating = false;
+            if (animationId) {
+                cancelAnimationFrame(animationId);
+            }
+        });
+
+        let resizeTimeout;
+        window.addEventListener('resize', function () {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(function () {
+                for (const flake of snowflakes) {
+                    if (flake.left > 100) {
+                        flake.left = 100;
+                        flake.element.style.left = flake.left + 'vw';
+                    }
+                }
+            }, 100);
+        });
+    })();
+</script>
+

@@ -1,0 +1,17 @@
+﻿.cubesStyle:hover {
+    cursor: pointer;
+    background-color: WhiteSmoke !important;
+}
+
+.stringsStyle:hover {
+    cursor: pointer;
+    background-color: WhiteSmoke !important;
+}
+
+.reset-btn{
+    opacity: 0.5;
+}
+
+.reset-btn:hover {
+    opacity: 1;
+}

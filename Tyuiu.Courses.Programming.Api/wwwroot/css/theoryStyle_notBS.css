@@ -1,0 +1,33 @@
+.text1,
+.text2 {
+    font-size: 20px;
+    font-weight: medium;
+}
+
+.title,
+.text1,
+.video {
+    margin-bottom: 35px;
+}
+
+.title {
+    text-align: center;
+    font-size: 40px;
+    color: #3f3cc3;
+}
+
+.video {
+    height: 720px;
+    width: 1280px;
+    border: 3px solid;
+}
+
+video {
+    height: 720px;
+    width: 1280px;
+}
+
+.text2 {
+    margin-bottom: 50px;
+    padding-bottom: 50px;
+}

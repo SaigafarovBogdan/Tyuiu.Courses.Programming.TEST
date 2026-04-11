@@ -1,0 +1,140 @@
+.text1,
+.text2 {
+    font-size: 20px;
+    font-weight: medium;
+}
+
+.title,
+.text1 {
+    margin-bottom: 35px;
+}
+
+.title {
+    text-align: center;
+    font-size: 40px;
+    color: #3f3cc3;
+}
+
+.text2 {
+    margin-bottom: 50px;
+    padding-bottom: 50px;
+}
+
+.sprint1 {
+    border: 1px solid;
+    border-radius: 20px;
+    min-width: 800px;
+    min-height: 400px;
+    max-height: 600px;
+
+}
+
+#completed-sprint {
+    display: flex;
+    justify-content: center;
+}
+
+#link {
+    width: 610px;
+    height: 40px;
+    margin-top: 20px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    border: 1px solid #000;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+#githubLinkSprint1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#taskName {
+    font-size: 30px;
+    color: #3f3cc3;
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+#option {
+    font-size: 20px;
+    margin-top: 20px;
+    color: #3f3cc3;
+}
+
+#taskName,
+#option,
+#task,
+#sub,
+#form {
+    margin-left: 35px;
+}
+
+#task,
+#sub {
+    margin-top: 30px;
+}
+
+#sub {
+    font-weight: bold;
+}
+
+#form {
+    margin-top: 30px;
+    font-size: 20px;
+}
+
+div #navigation-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+div #navigation-buttons button {
+    width: 20px;
+    height: 20px;
+    border: 1px solid;
+    border-radius: 100px;
+    background-color: #fff;
+    transition-duration: 0.2s;
+}
+
+div #navigation-buttons button:hover {
+    background-color: #3f3cc3;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+div #navigation-buttons button:not(#prevButton) {
+    margin-left: 10px;
+}
+
+div #navigation-buttons button:not(#prevButton, #nextButton) {
+    overflow: hidden;
+    text-indent: -999px;
+    line-height: 0px;
+}
+
+div #completed-sprint {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+div #completed-sprint button {
+    font-size: 20px;
+    width: 165px;
+    height: 50px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #3f3cc3;
+    color: #fff;
+    transition-duration: 0.2s;
+}
+
+div #completed-sprint button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}

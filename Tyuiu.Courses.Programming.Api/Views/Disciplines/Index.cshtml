@@ -1,0 +1,165 @@
+﻿@using Tyuiu.Courses.Programming.Application.Features.Disciplines.GetDisciplinesPaginated
+@model DisciplineSearchModel
+@{
+	ViewData["Title"] = "Дисциплины";	
+}
+
+<link rel="stylesheet" href="~/css/disciplinesListStyle.css" />
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<div class="container">
+	<div class="row mt-4 gy-3 justify-content-lg-center">
+		<div class="col-lg-10" id="DisciplinesList">
+			@await Html.PartialAsync("_DisciplineSearchResult", Model)
+		</div>
+	</div>
+</div>
+
+
+<div class="modal fade" id="editDisciplineNameModal" tabindex="-1" aria-labelledby="editDisciplineNameModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5" id="editDisciplineNameModalLabel">Изменение дисциплины</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<form class="mb-2" asp-action="Edit" id="newDisciplineName" method="post">
+					<label class="form-label" for="newDisciplineNameInput">Введите название дисциплины</label>
+					<input type="hidden" name="id" id="editDisciplineId" value="" required readonly />
+					<input type="text" name="name" class="form-control" id="newDisciplineNameInput" placeholder="Новое название дисциплины" maxlength="255" required />
+				</form>
+			</div>
+			<div class="modal-footer justify-content-center">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+				<button type="submit" form="newDisciplineName" class="btn btn-primary">Подтвердить</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="deleteDisciplineModal" tabindex="-1" aria-labelledby="deleteDisciplineModalLabel" aria-hidden="true">
+	<div class="modal-dialog  modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5" id="deleteDisciplineModalLabel">Удаление дисциплины</h1>
+			</div>
+			<div class="modal-body">
+				Вы действительно хотите удалить дисциплину ?
+			</div>
+			<form asp-action="Delete">
+				<div class="modal-footer justify-content-center">
+					<input type="hidden" name="id" id="deleteDisciplineId" value="" />
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+					<button type="submit" class="btn btn-primary">Удалить</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="createDisciplineModal" tabindex="-1" aria-labelledby="createDisciplineModalLabel" aria-hidden="true">
+	<div class="modal-dialog  modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5" id="createDisciplineModalLabel">Создание новой дисциплины</h1>
+			</div>
+			<form asp-action="Create">
+				<div class="modal-body">
+					<div class="mb-2">
+						<label for="recipient-name" class="form-label">Название дисциплины</label>
+						<input type="text" name="Name" class="form-control" id="recipient-name" maxlength="255" required>
+					</div>
+				</div>
+				<div class="mt-3 mb-3 gap-2 d-flex justify-content-center">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+					<button type="submit" value="Create" class="btn btn-primary">Создать</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="cloneDisciplineModal" tabindex="-1" aria-labelledby="cloneDisciplineModalLabel" aria-hidden="true">
+	<div class="modal-dialog  modal-dialog-centered">
+		<div class="modal-content">
+			<form asp-action="Clone" method="post">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="cloneDisciplineModalLabel">Дублирование дисциплины</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="mb-2">
+						<label for="newDisciplineName" class="form-label">Название новой дисциплины</label>
+						<input type="text" name="newDisciplineName" class="form-control" id="newDisciplineName" maxlength="255" required>
+					</div>
+					<input type="number" name="id" class="form-control" id="disciplineId" hidden readonly required>
+				</div>
+				<div class="modal-footer justify-content-center">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+					<button type="submit" class="btn btn-primary">Дублировать</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+@section Scripts {
+	<script>
+		$(document).on('show.bs.modal', '#deleteDisciplineModal', function (event) {
+			var button = $(event.relatedTarget);
+			var itemName = button.data('item-name');
+			var itemId = button.data('item-id');
+			var modal = $(this);
+			modal.find('.modal-body').text('Вы действительно хотите удалить дисциплину "' + itemName + '"?');
+			modal.find('#deleteDisciplineId').val(itemId);
+		});
+
+		$(document).on('show.bs.modal', '#editDisciplineNameModal', function (event) {
+			var button = $(event.relatedTarget);
+			var itemName = button.data('item-name');
+			var itemId = button.data('item-id');
+			var modal = $(this);
+			modal.find('.form-control').val(itemName);
+			modal.find('#editDisciplineId').val(itemId);
+		});
+
+		$(document).on('show.bs.modal', '#cloneDisciplineModal', function (event) {
+			var button = $(event.relatedTarget);
+			var itemName = button.data('item-name');
+			var itemId = button.data('item-id');
+			var modal = $(this);
+			modal.find('#disciplineId').val(itemId);
+			modal.find('#newDisciplineName').val(itemName + ' - копия');
+		});
+	</script>
+
+	<script>
+		$(document).ready(function () {
+			setSubscriptions();
+		});
+
+		function searchDisciplines() {
+			$.ajax({
+						url: '/Disciplines/SearchDisciplinePartial',
+				type: 'GET',
+				headers: {
+					RequestVerificationToken:
+						$('input:hidden[name="__RequestVerificationToken"]').val()
+				},
+				data: {
+					searchTerm: $('#DisciplineSearch').val(),
+				},
+				success: function (data) {
+					$('#DisciplinesList').html(data);
+					setSubscriptions();
+				},
+				error: handleResponse
+			});
+		}
+
+		function setSubscriptions() {
+			$('#DisciplineSearch').on('change', function () {
+				searchDisciplines();
+			});
+		}
+	</script>
+}

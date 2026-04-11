@@ -1,0 +1,39 @@
+﻿#alertContainer {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z - index: 9999;
+    width: 340px;
+    display: flex;
+    flex - direction: column - reverse;
+}
+
+.alert {
+    animation: fadeIn 0.5s;
+}
+
+.alert.removing {
+    animation: fadeOut 0.5s;
+}
+
+@keyframes fadeIn {
+  from {
+        opacity: 0;
+        transform: translateY(100 %);
+    }
+  to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+  from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+  to {
+        opacity: 0;
+        transform: translateY(100 %);
+    }
+}

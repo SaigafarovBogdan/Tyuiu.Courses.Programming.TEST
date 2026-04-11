@@ -1,0 +1,27 @@
+.list-group-item.ui-sortable-helper {
+    background-color: #f0f0f0;
+}
+
+.list-group-item::before {
+    margin-right: 5px;
+}
+
+.blue-background-class {
+    background-color: #f8f8f8;
+    opacity: 1;
+}
+
+.me-md-auto.d-md-flex {
+    text-decoration: none;
+    color: inherit;
+}
+
+    .me-md-auto.d-md-flex:hover {
+        cursor: pointer;
+    }
+.offButton.accordion-button::after {
+    display: none !important;
+}
+.list-group-numbered > .list-group-item.deleteNumber::before {
+    display: none !important;
+}
