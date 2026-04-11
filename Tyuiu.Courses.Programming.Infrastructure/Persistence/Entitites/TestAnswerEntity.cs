@@ -2,7 +2,7 @@
 
 namespace Tyuiu.Courses.Programming.Infrastructure.Persistence.Entitites
 {
-	public class TestAnswerEntity(int id) : Entity(id)
+	public class TestAnswerEntity: Entity
 	{
 		public int TestResultId { get; set; }
 		public int QuestionId { get; set; }

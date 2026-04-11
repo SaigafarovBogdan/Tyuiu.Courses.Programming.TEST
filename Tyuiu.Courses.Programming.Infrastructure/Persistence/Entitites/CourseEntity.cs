@@ -2,7 +2,7 @@
 
 namespace Tyuiu.Courses.Programming.Infrastructure.Persistence.Entitites
 {
-	public class CourseEntity(int id) : Entity(id)
+	public class CourseEntity: Entity
 	{
 		public string Name { get; set; } = default!;
 		public int? DisciplineId { get; set; }

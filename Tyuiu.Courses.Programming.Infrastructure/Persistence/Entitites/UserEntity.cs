@@ -9,6 +9,9 @@ namespace Tyuiu.Courses.Programming.Infrastructure.Persistence.Entitites
 		public string? Patronymic { get; set; }
 		public int? GroupId { get; set; }
 
+		public string FullName => string.Join(" ", [Surname, Name, Patronymic]);
+		public string InitialedName => $"{Surname} {Name?.First()}.{(!string.IsNullOrEmpty(Patronymic) ? Patronymic.First() + "." : "")}";
+
 		public virtual GroupEntity? Group { get; set; }
 	}
 }

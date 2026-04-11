@@ -2,7 +2,7 @@
 
 namespace Tyuiu.Courses.Programming.Infrastructure.Persistence.Entitites
 {
-	public class TestResultEntity(int id) : Entity(id)
+	public class TestResultEntity: Entity
 	{
 		public int CourseThemeId { get; set; }
 		public string UserId { get; set; } = default!;

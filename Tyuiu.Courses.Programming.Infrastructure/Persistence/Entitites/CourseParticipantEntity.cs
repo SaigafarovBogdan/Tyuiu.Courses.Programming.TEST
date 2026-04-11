@@ -2,7 +2,7 @@
 
 namespace Tyuiu.Courses.Programming.Infrastructure.Persistence.Entitites
 {
-	public class CourseParticipantEntity(int id) : Entity(id)
+	public class CourseParticipantEntity: Entity
 	{
 		public string UserId { get; set; } = default!;
 		public bool isModerator { get; set; }

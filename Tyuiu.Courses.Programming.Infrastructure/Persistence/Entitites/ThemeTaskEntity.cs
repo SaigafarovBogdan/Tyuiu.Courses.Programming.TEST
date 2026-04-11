@@ -2,7 +2,7 @@
 
 namespace Tyuiu.Courses.Programming.Infrastructure.Persistence.Entitites
 {
-	public class ThemeTaskEntity(int id) : Entity(id)
+	public class ThemeTaskEntity: Entity
 	{
 		public int Variant { get; set; }
 		public string Description { get; set; } = default!;

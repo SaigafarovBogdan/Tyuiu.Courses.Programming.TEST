@@ -2,7 +2,7 @@
 
 namespace Tyuiu.Courses.Programming.Infrastructure.Persistence.Entitites
 {
-	public class ThemeEntity(int id) : Entity(id)
+	public class ThemeEntity: Entity
 	{
 		public string Name { get; set; } = default!;
 		public int SprintId { get; set; }

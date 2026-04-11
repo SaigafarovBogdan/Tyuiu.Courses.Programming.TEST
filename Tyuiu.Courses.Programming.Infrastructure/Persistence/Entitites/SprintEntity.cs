@@ -2,7 +2,7 @@
 
 namespace Tyuiu.Courses.Programming.Infrastructure.Persistence.Entitites
 {
-	public class SprintEntity(int id) : Entity(id)
+	public class SprintEntity: Entity
 	{
 		public string Name { get; set; } = default!;
 		public int DisciplineId { get; set; }

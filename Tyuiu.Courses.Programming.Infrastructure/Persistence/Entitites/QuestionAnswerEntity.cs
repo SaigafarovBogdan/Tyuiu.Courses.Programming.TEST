@@ -2,7 +2,7 @@
 
 namespace Tyuiu.Courses.Programming.Infrastructure.Persistence.Entitites
 {
-	public class QuestionAnswerEntity(int id) : Entity(id)
+	public class QuestionAnswerEntity: Entity
 	{
 		public string Text { get; set; } = default!;
 		public bool IsCorrect { get; set; }

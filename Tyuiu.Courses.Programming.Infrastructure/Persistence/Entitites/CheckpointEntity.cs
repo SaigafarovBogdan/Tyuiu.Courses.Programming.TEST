@@ -2,7 +2,7 @@
 
 namespace Tyuiu.Courses.Programming.Infrastructure.Persistence.Entitites
 {
-	public class CheckpointEntity(int id) : Entity(id)
+	public class CheckpointEntity: Entity
 	{
 		public int CourseSprintId { get; set; }
 		public string Name { get; set; } = default!;

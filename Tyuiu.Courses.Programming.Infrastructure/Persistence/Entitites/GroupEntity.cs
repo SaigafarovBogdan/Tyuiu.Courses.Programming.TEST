@@ -2,7 +2,7 @@
 
 namespace Tyuiu.Courses.Programming.Infrastructure.Persistence.Entitites
 {
-	public class GroupEntity(int id) : Entity(id)
+	public class GroupEntity: Entity
 	{
 		public string Name { get; set; } = default!;
 

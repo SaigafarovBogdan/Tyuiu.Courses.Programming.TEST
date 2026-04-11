@@ -6,11 +6,15 @@
 		public TId Id { get; protected set; }
 		object IEntity.Id => Id;
 
+		protected Entity()
+		{
+			Id = default!;
+		}
+
 		protected Entity(TId id)
 		{
 			Id = id ?? throw new ArgumentNullException(nameof(id));
 		}
-
 
 		public override bool Equals(object? obj)
 		{
@@ -49,8 +53,8 @@
 
 	public abstract class Entity : Entity<int>
 	{
-		protected Entity(int id) : base(id)
-		{
-		}
+		protected Entity(int id) : base(id) {}
+
+		protected Entity() : base(default!) {}
 	}
 }

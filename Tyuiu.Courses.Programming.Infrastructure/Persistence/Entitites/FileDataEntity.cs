@@ -2,7 +2,7 @@
 
 namespace Tyuiu.Courses.Programming.Infrastructure.Persistence.Entitites
 {
-	public class FileDataEntity(int id) : Entity(id)
+	public class FileDataEntity: Entity
 	{
 		public string OriginalName { get; set; } = default!;
 		public string Guid { get; set; } = default!;

@@ -2,13 +2,13 @@
 
 namespace Tyuiu.Courses.Programming.Infrastructure.Persistence.Entitites
 {
-	public class DisciplineEntity(int id) : Entity(id)
+	public class DisciplineEntity : Entity
 	{
 		public string Name { get; set; } = default!;
 		public string? AuthorId { get; set; }
 
 		public virtual UserEntity? Author { get; set; }
-		public virtual List<SprintEntity>? Sprints { get; set; }
-		public virtual List<CourseEntity>? Courses { get; set; }
+		public virtual List<SprintEntity>? Sprints { get; set; } = [];
+		public virtual List<CourseEntity>? Courses { get; set; } = [];
 	}
 }

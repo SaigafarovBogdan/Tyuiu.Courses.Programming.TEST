@@ -3,7 +3,7 @@ using Tyuiu.Courses.Programming.Core.Shared;
 
 namespace Tyuiu.Courses.Programming.Infrastructure.Persistence.Entitites
 {
-	public class QuestionEntity(int id) : Entity(id)
+	public class QuestionEntity: Entity
 	{
 		public int TestId { get; set; }
 		public string Title { get; set; } = default!;
