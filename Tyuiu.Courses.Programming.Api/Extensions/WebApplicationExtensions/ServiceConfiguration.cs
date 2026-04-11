@@ -1,6 +1,4 @@
-﻿using FluentValidation;
-using MediatR;
-using Tyuiu.Courses.Programming.Application.Behaviors;
+﻿using Tyuiu.Courses.Programming.Application;
 
 namespace Tyuiu.Courses.Programming.Api.Extensions.WebApplicationExtensions
 {
@@ -13,16 +11,7 @@ namespace Tyuiu.Courses.Programming.Api.Extensions.WebApplicationExtensions
 				builder.WebHost.ConfigureKestrel(options => options.ListenAnyIP(80));
 			}
 
-			builder.Services.AddMediatR(cfg =>
-			{
-				cfg.RegisterServicesFromAssembly(typeof(ServiceConfiguration).Assembly);
-
-				cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
-				cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(TransactionBehavior<,>));
-				cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
-			});
-
-			builder.Services.AddValidatorsFromAssembly(typeof(ServiceConfiguration).Assembly);
+			builder.Services.AddApplication();
 
 			return builder;
 		}
