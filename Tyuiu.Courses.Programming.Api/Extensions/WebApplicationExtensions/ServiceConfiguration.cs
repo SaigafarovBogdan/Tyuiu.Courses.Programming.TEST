@@ -6,6 +6,8 @@ namespace Tyuiu.Courses.Programming.Api.Extensions.WebApplicationExtensions
 	{
 		public static WebApplicationBuilder ConfigureServices(this WebApplicationBuilder builder)
 		{
+			builder.Services.AddControllersWithViews();
+
 			if (!builder.Environment.IsDevelopment())
 			{
 				builder.WebHost.ConfigureKestrel(options => options.ListenAnyIP(80));

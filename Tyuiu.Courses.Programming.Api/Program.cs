@@ -11,9 +11,9 @@ namespace Tyuiu.Courses.Programming.Api
 			builder.AddServiceDefaults();
 
 			builder.ConfigureLogging()
-				   .ConfigureDatabase();
-
-			builder.Services.AddControllers();
+				   .ConfigureDatabase()
+				   .ConfigureIdentity()
+				   .ConfigureServices();
 
 			var app = builder.Build();
 
@@ -24,8 +24,10 @@ namespace Tyuiu.Courses.Programming.Api
 			UpdateDbData updateDbData = new(serviceProvider);
 			await updateDbData.InitializeAsync();
 
-			app.ConfigureEnvironment()
-			   .ConfigureLocalization();
+			app.UseStatusCodePagesWithReExecute("/Error/StatusCode/{0}");
+
+			(await app.ConfigureEnvironment(serviceProvider))
+			    .ConfigureLocalization();
 
 			app.UseHttpsRedirection();
 			app.UseStaticFiles(new StaticFileOptions
@@ -35,9 +37,17 @@ namespace Tyuiu.Courses.Programming.Api
 			});
 
 			app.UseRouting();
+			app.UseAuthentication();
+			app.UseAuthorization();
 
 			app.MapDefaultEndpoints();
-			app.MapControllers();
+			app.MapControllerRoute(
+				name: "default",
+				pattern: "{controller=Courses}/{action=Learn}");
+			app.MapControllerRoute(
+				name: "error",
+				pattern: "{controller=Error}/{action=StatusCode}/{code}");
+			app.MapRazorPages();
 
 			app.Run();
 		}

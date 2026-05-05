@@ -7,7 +7,9 @@ namespace Tyuiu.Courses.Programming.Api.Extensions.WebApplicationExtensions
 	{
 		public static WebApplicationBuilder ConfigureDatabase(this WebApplicationBuilder builder)
 		{
-			builder.AddNpgsqlDbContext<DatabaseContext>("orderdb", configureDbContextOptions: options =>
+			AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
+			builder.AddNpgsqlDbContext<DatabaseContext>("postgres", configureDbContextOptions: options =>
 			{
 				options.UseNpgsql(npgsqlOptions =>
 				{
@@ -38,9 +40,8 @@ namespace Tyuiu.Courses.Programming.Api.Extensions.WebApplicationExtensions
 			}
 		}
 
-		public static async Task SeedDatabaseAsync(this WebApplication app)
+		public static async Task SeedDatabaseAsync(this WebApplication app, IServiceProvider serviceProvider)
 		{
-			using var scope = app.Services.CreateScope();
 			//var seed = scope.ServiceProvider.GetRequiredService<DbSeeder>();
 			//await seed.InitializeAsync();
 		}

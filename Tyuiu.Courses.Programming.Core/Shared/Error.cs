@@ -18,8 +18,8 @@ namespace Tyuiu.Courses.Programming.Core.Shared
 		public static Error Validation(string property, string message, string code = nameof(RequestResult.INVALID_DATA)) => 
 			new(code, message, property);
 
-		public static Error NotFound() =>
-			new(nameof(RequestResult.NOT_FOUND), RequestResult.NOT_FOUND);
+		public static Error NotFound(string message = RequestResult.NOT_FOUND) =>
+			new(nameof(RequestResult.NOT_FOUND), message);
 
 		public static Error Forbidden(string message = RequestResult.ACCESS_DENIED) =>
 			new(nameof(RequestResult.ACCESS_DENIED), message);

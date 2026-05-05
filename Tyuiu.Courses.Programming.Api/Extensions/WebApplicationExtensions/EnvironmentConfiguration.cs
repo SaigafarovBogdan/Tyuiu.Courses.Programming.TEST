@@ -2,11 +2,13 @@
 {
 	public static class EnvironmentConfiguration
 	{
-		public static WebApplication ConfigureEnvironment(this WebApplication app)
+		public static async Task<WebApplication> ConfigureEnvironment(this WebApplication app, IServiceProvider serviceProvider)
 		{
 			if (app.Environment.IsDevelopment())
 			{
 				app.UseMigrationsEndPoint();
+
+				await app.SeedDatabaseAsync(serviceProvider);
 			}
 			else
 			{

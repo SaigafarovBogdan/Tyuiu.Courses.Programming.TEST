@@ -1,9 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
+using Tyuiu.Courses.Programming.Infrastructure.Persistence.Entitites;
 
 namespace Tyuiu.Courses.Programming.Infrastructure.Persistence
 {
-	public class DatabaseContext : DbContext
+	public class DatabaseContext : IdentityDbContext<UserEntity>
 	{
 		private IDbContextTransaction? _currentTransaction;
 

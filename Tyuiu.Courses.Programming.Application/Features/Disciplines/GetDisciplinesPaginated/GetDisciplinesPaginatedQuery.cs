@@ -4,6 +4,7 @@ using Tyuiu.Courses.Programming.Application.Dtos;
 using Tyuiu.Courses.Programming.Core.Shared;
 using Tyuiu.Courses.Programming.Infrastructure.Persistence.Abstractions;
 using Tyuiu.Courses.Programming.Infrastructure.Persistence.Entitites;
+using Tyuiu.Courses.Programming.Infrastructure.Providers.Identity;
 
 namespace Tyuiu.Courses.Programming.Application.Features.Disciplines.GetDisciplinesPaginated
 {
