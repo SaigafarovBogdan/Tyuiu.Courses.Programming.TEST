@@ -9,22 +9,16 @@ namespace Tyuiu.Courses.Programming.Api.Extensions.WebApplicationExtensions
 		{
 			AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
-			builder.AddNpgsqlDbContext<DatabaseContext>("postgres", configureDbContextOptions: options =>
-			{
-				options.UseNpgsql(npgsqlOptions =>
+			builder.AddNpgsqlDbContext<DatabaseContext>("aspnetappdb",
+				configureDbContextOptions: options =>
 				{
-					npgsqlOptions.MigrationsAssembly(typeof(DatabaseContext).Assembly.FullName);
-					npgsqlOptions.EnableRetryOnFailure(3);
+					if (builder.Environment.IsDevelopment())
+					{
+						options.EnableSensitiveDataLogging();
+						options.EnableDetailedErrors();
+					}
+					options.UseNpgsql(b => b.MigrationsAssembly("Tyuiu.Courses.Programming.Infrastructure"));
 				});
-
-				if (builder.Environment.IsDevelopment())
-				{
-					options.EnableSensitiveDataLogging();
-					options.EnableDetailedErrors();
-
-					builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-				}
-			});
 
 			return builder;
 		}
@@ -39,7 +33,6 @@ namespace Tyuiu.Courses.Programming.Api.Extensions.WebApplicationExtensions
 				await dbContext.Database.MigrateAsync();
 			}
 		}
-
 		public static async Task SeedDatabaseAsync(this WebApplication app, IServiceProvider serviceProvider)
 		{
 			//var seed = scope.ServiceProvider.GetRequiredService<DbSeeder>();

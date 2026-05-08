@@ -17,7 +17,6 @@ namespace Tyuiu.Courses.Programming.Infrastructure.Persistence
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
-			modelBuilder.ApplyConfigurationsFromAssembly(typeof(DatabaseContext).Assembly);
 			base.OnModelCreating(modelBuilder);
 		}
 
