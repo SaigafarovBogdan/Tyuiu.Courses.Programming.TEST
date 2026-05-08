@@ -25,8 +25,8 @@
 			<div class="modal-body">
 				<form class="mb-2" asp-action="Edit" id="newDisciplineName" method="post">
 					<label class="form-label" for="newDisciplineNameInput">Введите название дисциплины</label>
-					<input type="hidden" name="id" id="editDisciplineId" value="" required readonly />
-					<input type="text" name="name" class="form-control" id="newDisciplineNameInput" placeholder="Новое название дисциплины" maxlength="255" required />
+					<input type="hidden" name="Id" id="editDisciplineId" value="" required readonly />
+					<input type="text" name="DisciplineName" class="form-control" id="newDisciplineNameInput" placeholder="Новое название дисциплины" maxlength="255" required />
 				</form>
 			</div>
 			<div class="modal-footer justify-content-center">
@@ -48,7 +48,7 @@
 			</div>
 			<form asp-action="Delete">
 				<div class="modal-footer justify-content-center">
-					<input type="hidden" name="id" id="deleteDisciplineId" value="" />
+					<input type="hidden" name="Id" id="deleteDisciplineId" value="" />
 					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
 					<button type="submit" class="btn btn-primary">Удалить</button>
 				</div>
@@ -67,7 +67,7 @@
 				<div class="modal-body">
 					<div class="mb-2">
 						<label for="recipient-name" class="form-label">Название дисциплины</label>
-						<input type="text" name="Name" class="form-control" id="recipient-name" maxlength="255" required>
+						<input type="text" name="DisciplineName" class="form-control" id="recipient-name" maxlength="255" required>
 					</div>
 				</div>
 				<div class="mt-3 mb-3 gap-2 d-flex justify-content-center">
@@ -90,9 +90,9 @@
 				<div class="modal-body">
 					<div class="mb-2">
 						<label for="newDisciplineName" class="form-label">Название новой дисциплины</label>
-						<input type="text" name="newDisciplineName" class="form-control" id="newDisciplineName" maxlength="255" required>
+						<input type="text" name="NewDisciplineName" class="form-control" id="newDisciplineName" maxlength="255" required>
 					</div>
-					<input type="number" name="id" class="form-control" id="disciplineId" hidden readonly required>
+					<input type="number" name="Id" class="form-control" id="disciplineId" hidden readonly required>
 				</div>
 				<div class="modal-footer justify-content-center">
 					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
