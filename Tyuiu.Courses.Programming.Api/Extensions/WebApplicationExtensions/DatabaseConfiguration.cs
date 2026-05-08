@@ -35,8 +35,8 @@ namespace Tyuiu.Courses.Programming.Api.Extensions.WebApplicationExtensions
 		}
 		public static async Task SeedDatabaseAsync(this WebApplication app, IServiceProvider serviceProvider)
 		{
-			//var seed = scope.ServiceProvider.GetRequiredService<DbSeeder>();
-			//await seed.InitializeAsync();
+			SeedDbData seedDbData = new(serviceProvider);
+			await seedDbData.InitializeAsync();
 		}
 	}
 }
