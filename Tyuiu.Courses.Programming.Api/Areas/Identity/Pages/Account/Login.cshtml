@@ -1,0 +1,69 @@
+﻿@page
+@model LoginModel
+
+@{
+	ViewData["Title"] = "Вход";
+}
+
+<div class="d-flex justify-content-center align-items-center" style="min-height: 86vh;">
+	
+	<div class="col-lg-4 col-sm-6 col-11 border border-light-subtitle shadow rounded-4">
+		<form id="account" class="d-flex flex-column gap-3 p-4" method="post">
+			<h3 class="text-center">Вход</h3>
+
+			<div class="col-lg-12">
+				<label for="validationDefault01" class="form-label">Логин / почта</label>
+				<input asp-for="Input.Login" type="text" class="form-control" id="login" placeholder="Логин или почта" autocomplete="on" maxlength="255">
+				<span asp-validation-for="Input.Login" class="text-danger"></span>
+			</div>
+			<div class="col-lg-12">
+				<span class="d-flex align-items-center">
+					<label for="validationDefault02" class="form-label">Пароль</label>
+					<a class="btn mb-1 ms-1 showHidePassword p-0" role="button" href="#" data-password-input="validationDefault02">
+						<i class="bi bi-eye-slash passwordIcon"></i>
+					</a>
+				</span>
+				<input asp-for="Input.Password" type="password" class="form-control" id="validationDefault02" placeholder="Пароль" autocomplete="on" maxlength="255">
+				<span asp-validation-for="Input.Password" class="text-danger"></span>
+			</div>
+			
+			@* <div class="d-flex col-lg-12">
+				<div class="form-check col-lg-6">
+					<input asp-for="Input.RememberMe" class="form-check-input" type="checkbox" id="gridCheck">
+					<label class="form-check-label" for="gridCheck">
+						Запомнить меня
+					</label>
+				</div>
+  				<div class="form-forgot-password col-lg-6 text-end">
+					<label class="form-forgot-password" for="forgotPassword">
+						<a id="forgot-password" asp-page="./ForgotPassword">Забыли пароль?</a>
+					</label>
+				</div> 
+			</div> *@
+@* 			<div class="col-lg-6 mt-4 align-items-center d-flex">
+				<label class="form-support text-center " for="contactWithSupport">
+					<a id="help-me" asp-page="./HelpMe">Поддержка</a>
+				</label>
+			</div>  *@
+			<div class="text-danger">
+				@foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+				{
+					<p>@error.ErrorMessage</p>
+				}
+			</div>
+			<div class="text-end">
+				<button id="login-submit" class="btn btn-primary rounded-circle" type="submit" style="height: 70px; width: 70px;">
+					<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+						<path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
+					</svg>
+				</button>
+			</div>
+		</form>
+	</div>
+
+</div>
+
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+	<script src="~/js/showHidePassword.js?v=1.0"></script>
+}

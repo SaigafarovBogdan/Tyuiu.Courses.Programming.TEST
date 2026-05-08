@@ -1,0 +1,39 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<UserEntity> SignInManager
+@inject UserManager<UserEntity> UserManager
+<ul class="navbar-nav">
+	@if (SignInManager.IsSignedIn(User))
+	{
+		string userName = User.Claims.FirstOrDefault(c => c.Type == "Name").Value;
+		string userSurname = User.Claims.FirstOrDefault(c => c.Type == "Surname").Value;
+		@* string[] userRoles = User.Claims.FirstOrDefault(c => c.Type == "UserRoles").Value.Split(","); *@
+		@*<li class="nav-item">
+	<a  class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @userFirstName @userLastName! </a>
+	</li>
+	@if(userRoles != null)
+	{
+	<a class="nav-link">Your roles are</a>
+	@foreach(var userRole in userRoles)
+	{
+	<a class="nav-link">@userRole</a>
+	}
+	}*@
+
+		<li class="nav-item">
+			<form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Learn", "Courses", new { area = "" })">
+				<button type="submit" class="btn btn-outline-secondary ms-lg-5 mt-0 rounded-3" style="--bs-btn-hover-bg: Gainsboro; --bs-btn-active-bg: Silver; --bs-btn-border-color: LightGray;">
+					<i class="bi bi-box-arrow-left fs-5 text-danger"></i>
+				</button>
+			</form>
+		</li>
+	}
+	else
+	{
+		<li class="nav-item">
+			<a class="btn btn-outline-secondary ms-lg-5 mt-0 rounded-3" role="button" style="--bs-btn-hover-bg: Gainsboro; --bs-btn-active-bg: Silver; --bs-btn-border-color: LightGray;" asp-area="Identity" asp-page="/Account/Login">
+				<i class="bi bi-box-arrow-right fs-5 text-primary"></i>
+			</a>
+		</li>
+	}
+</ul>
