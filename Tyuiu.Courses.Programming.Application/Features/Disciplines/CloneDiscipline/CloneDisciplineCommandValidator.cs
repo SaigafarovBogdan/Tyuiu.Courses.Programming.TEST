@@ -2,7 +2,7 @@
 
 namespace Tyuiu.Courses.Programming.Application.Features.Disciplines.CloneDiscipline
 {
-	internal class CloneDisciplineCommandValidator : AbstractValidator<CloneDisciplineCommand>
+	public class CloneDisciplineCommandValidator : AbstractValidator<CloneDisciplineCommand>
 	{
 		public CloneDisciplineCommandValidator()
 		{

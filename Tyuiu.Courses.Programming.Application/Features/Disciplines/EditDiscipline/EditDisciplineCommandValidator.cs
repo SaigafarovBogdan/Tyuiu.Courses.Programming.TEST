@@ -2,7 +2,7 @@
 
 namespace Tyuiu.Courses.Programming.Application.Features.Disciplines.EditDiscipline
 {
-	internal class EditDisciplineCommandValidator : AbstractValidator<EditDisciplineCommand>
+	public class EditDisciplineCommandValidator : AbstractValidator<EditDisciplineCommand>
 	{
 		public EditDisciplineCommandValidator()
 		{

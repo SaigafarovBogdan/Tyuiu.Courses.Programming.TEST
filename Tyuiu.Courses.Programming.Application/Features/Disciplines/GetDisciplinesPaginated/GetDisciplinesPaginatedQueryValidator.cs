@@ -2,7 +2,7 @@
 
 namespace Tyuiu.Courses.Programming.Application.Features.Disciplines.GetDisciplinesPaginated
 {
-	internal class GetDisciplinesPaginatedQueryValidator : AbstractValidator<GetDisciplinesPaginatedQuery>
+	public class GetDisciplinesPaginatedQueryValidator : AbstractValidator<GetDisciplinesPaginatedQuery>
 	{
 		public GetDisciplinesPaginatedQueryValidator()
 		{

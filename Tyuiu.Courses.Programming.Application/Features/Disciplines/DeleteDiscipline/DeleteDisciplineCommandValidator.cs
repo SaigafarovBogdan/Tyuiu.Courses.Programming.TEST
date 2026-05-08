@@ -2,7 +2,7 @@
 
 namespace Tyuiu.Courses.Programming.Application.Features.Disciplines.DeleteDiscipline
 {
-	internal class DeleteDisciplineCommandValidator : AbstractValidator<DeleteDisciplineCommand>
+	public class DeleteDisciplineCommandValidator : AbstractValidator<DeleteDisciplineCommand>
 	{
 		public DeleteDisciplineCommandValidator()
 		{

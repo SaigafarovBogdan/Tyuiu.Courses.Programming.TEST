@@ -2,7 +2,7 @@
 
 namespace Tyuiu.Courses.Programming.Application.Features.Disciplines.CreateDiscipline
 {
-	internal class CreateDisciplineCommandValidator : AbstractValidator<CreateDisciplineCommand>
+	public class CreateDisciplineCommandValidator : AbstractValidator<CreateDisciplineCommand>
 	{
 		public CreateDisciplineCommandValidator()
 		{
