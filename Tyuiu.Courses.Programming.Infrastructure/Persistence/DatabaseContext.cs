@@ -9,6 +9,8 @@ namespace Tyuiu.Courses.Programming.Infrastructure.Persistence
 	{
 		private IDbContextTransaction? _currentTransaction;
 
+		public DbSet<DisciplineEntity>? Disciplines { get; set; }
+
 		public DatabaseContext(DbContextOptions<DatabaseContext> options)
 			: base(options) { }
 
