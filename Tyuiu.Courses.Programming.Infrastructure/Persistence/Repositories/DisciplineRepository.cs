@@ -61,6 +61,7 @@ namespace Tyuiu.Courses.Programming.Infrastructure.Persistence.Repositories
 						.ThenInclude(t => t.Test!)
 							.ThenInclude(test => test.Questions!)
 								.ThenInclude(q => q.Answers)
+				.AsSplitQuery()
 				.FirstOrDefaultAsync(d => d.Id == id, cancellationToken);
 		}
 	}
