@@ -26,7 +26,7 @@ namespace Tyuiu.Courses.Programming.Application.Behaviors
 			RequestHandlerDelegate<TResponse> next,
 			CancellationToken cancellationToken)
 		{
-			if (request is IQuery<TResponse> || _context.HasActiveTransaction)
+			if (request is IQuery || _context.HasActiveTransaction)
 			{
 				return await next(cancellationToken);
 			}
